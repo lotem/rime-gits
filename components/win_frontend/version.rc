@@ -1,0 +1,33 @@
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1.0.0.0
+ PRODUCTVERSION 1.0.0.0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x3L
+ FILESUBTYPE 0xbL
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000904b0"
+        BEGIN
+            VALUE "CompanyName", "Google Inc."
+            VALUE "FileDescription", "Google Input Tools"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "LegalCopyright", "Copyright (C) 2012"
+            VALUE "ProductName", "Google Input Tools"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x9, 1200
+    END
+END
+#endif
