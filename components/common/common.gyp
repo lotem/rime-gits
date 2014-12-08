@@ -3,6 +3,7 @@
     'srcs': [
       'file_utils_win.cc',
       'hotkey_util.cc',
+      'keystroke_util.cc',
       'focus_input_context_manager_sub_component.cc',
     ],
   },

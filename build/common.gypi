@@ -148,7 +148,7 @@
             'SuppressStartupBanner': 'true',       # /nologo
             'WarningLevel': '3',                   # /W3
             'WarnAsError': 'true',                 # /WX
-            'UsePrecompiledHeader': '1',           # /Yc
+            'UsePrecompiledHeader': '0',           #
             'UseFullPaths': 'true',                # /FC
             'PrecompiledHeaderThrough': 'precompile.h',
             'ForcedIncludeFiles': 'precompile.h',
