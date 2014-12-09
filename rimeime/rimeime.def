@@ -1,0 +1,10 @@
+LIBRARY rimeime
+EXPORTS
+ListComponents
+CreateInstance
+DestroyInstance
+GetInfo
+Registered
+Deregistered
+HandleMessage
+FreeBuffer
