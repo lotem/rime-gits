@@ -1,6 +1,6 @@
 /*
- * Copyleft RIME Developers
- * License: GPLv3
+ * Copyright RIME Developers
+ * Distributed under the BSD License
  *
  * 2011-08-08  GONG Chen <chen.sst@gmail.com>  v0.9
  * 2013-05-02  GONG Chen <chen.sst@gmail.com>  v1.0
@@ -486,6 +486,9 @@ typedef struct rime_api_t {
   //! select a candidate from current page
   Bool (*select_candidate)(RimeSessionId session_id, size_t index);
 
+  //! get the version of librime
+  const char* (*get_version)();
+
 } RimeApi;
 
 //! API entry
@@ -548,6 +551,27 @@ RIME_MODULE_INITIALIZER(rime_register_module_##name) { \
   rime_get_api()->register_module(&module); \
 } \
 static void rime_customize_module_##name(RimeModule* module)
+
+/*!
+ *  Defines a constant for a list of module names.
+ */
+#define RIME_MODULE_LIST(var, ...) \
+const char* var[] = { \
+  __VA_ARGS__, NULL \
+} \
+
+/*!
+ *  Register a phony module which, when loaded, will load a list of modules.
+ *  \sa setup.cc for an example.
+ */
+#define RIME_REGISTER_MODULE_GROUP(name, ...) \
+static RIME_MODULE_LIST(rime_##name##_module_group, __VA_ARGS__); \
+static void rime_##name##_initialize() { \
+  rime::LoadModules(rime_##name##_module_group); \
+} \
+static void rime_##name##_finalize() { \
+} \
+RIME_REGISTER_MODULE(name)
 
 #ifdef __cplusplus
 }
