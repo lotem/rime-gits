@@ -1,5 +1,5 @@
-#ifndef RIMEIME_RIME_KEY_EVENT_H_
-#define RIMEIME_RIME_KEY_EVENT_H_
+#ifndef GOOPY_PLUGINS_RIME_RIME_KEY_EVENT_H_
+#define GOOPY_PLUGINS_RIME_RIME_KEY_EVENT_H_
 
 namespace ipc {
 namespace proto {
@@ -7,7 +7,8 @@ class KeyEvent;
 }  // namespace proto
 }  // namespace ipc
 
-namespace rimeime {
+namespace plugins {
+namespace rime {
 
 struct RimeKeyEvent {
   int keycode;
@@ -17,6 +18,7 @@ struct RimeKeyEvent {
   RimeKeyEvent(const ipc::proto::KeyEvent& key);
 };
 
-}  // namespace rimeime
+}  // namespace rime
+}  // namespace plugins
 
-#endif  // RIMEIME_RIME_KEY_EVENT_H_
+#endif  // GOOPY_PLUGINS_RIME_RIME_KEY_EVENT_H_

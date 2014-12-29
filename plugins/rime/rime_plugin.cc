@@ -4,10 +4,10 @@
 #include "base/logging.h"
 #include "base/scoped_ptr.h"
 #include "components/plugin_wrapper/plugin_definition.h"
-#include "rimeime/rime_engine_component.h"
+#include "plugins/rime/rime_engine_component.h"
 
-using rimeime::RimeApiWrapper;
-using rimeime::RimeEngineComponent;
+using plugins::rime::RimeApiWrapper;
+using plugins::rime::RimeEngineComponent;
 
 int GetAvailableComponentInfos(ipc::proto::MessagePayload* payload) {
   DCHECK(payload);
@@ -19,7 +19,7 @@ int GetAvailableComponentInfos(ipc::proto::MessagePayload* payload) {
 
 ipc::Component* CreateComponent(const char* id) {
   std::string string_id = id;
-  if (string_id == rimeime::kRimeEngineComponentStringId) {
+  if (string_id == plugins::rime::kRimeEngineComponentStringId) {
     return new RimeEngineComponent(RimeApiWrapper::GetInstance());
   }
   return NULL;

@@ -1,7 +1,7 @@
 {
   'targets': [
     {
-      'target_name': 'rimeime',
+      'target_name': 'rime_plugin',
       'type': 'shared_library',
       'include_dirs': [
         '<(SHARED_INTERMEDIATE_DIR)/protoc_out',
@@ -16,7 +16,7 @@
       ],
       'msvs_settings': {
         'VCLinkerTool': {
-          'ModuleDefinitionFile': 'rimeime.def',
+          'ModuleDefinitionFile': 'rime.def',
         },
       },
       'dependencies': [

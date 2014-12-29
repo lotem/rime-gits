@@ -1,7 +1,7 @@
 // Copyleft RIME Developers.
 // Author: Chen Gong <chen.sst@gmail.com>
 
-#include "rimeime/rime_engine_component.h"
+#include "plugins/rime/rime_engine_component.h"
 
 #include <string>
 
@@ -18,9 +18,9 @@
 #include "ipc/protos/ipc.pb.h"
 #include "skin/skin_consts.h"
 
-#include "rimeime/keysym.h"
-#include "rimeime/rime_api.h"
-#include "rimeime/rime_key_event.h"
+#include "plugins/rime/keysym.h"
+#include "plugins/rime/rime_api.h"
+#include "plugins/rime/rime_key_event.h"
 
 using ime_goopy::AppUtils;
 using ime_goopy::FileUtils;
@@ -29,7 +29,7 @@ using ime_goopy::WideToUtf8;
 
 namespace {
 
-// The message types rimeime can consume.
+// The message types Rime engine can consume.
 const uint32 kConsumeMessages[] = {
   // Input context related messages.
   ipc::MSG_ATTACH_TO_INPUT_CONTEXT,
@@ -58,15 +58,15 @@ const uint32 kProduceMessages[] = {
   ipc::MSG_UPDATE_COMMANDS,
 };
 
-static const char* kRimeImeLanguages[] = {
+static const char* kRimeLanguages[] = {
   "zh-CN",
   "zh-HK",
   "zh-TW",
   NULL
 };
-static const char kRimeImeIcon[]  = "rimeime.png";
-static const char kRimeImeOverIcon[]  = "rimeime_over.png";
-static const char kResourcePackPathPattern[] = "/rimeime_[LANG].pak";
+static const char kRimeIcon[]  = "rime.png";
+static const char kRimeOverIcon[]  = "rime_over.png";
+static const char kResourcePackPathPattern[] = "/rime_[LANG].pak";
 
 static const int kDefaultFontSize = 12;
 
@@ -136,7 +136,8 @@ typedef RimeApi* (*RimeApiProc)();
 
 }  // namespace
 
-namespace rimeime {
+namespace plugins {
+namespace rime {
 
 using ipc::proto::Message;
 
@@ -211,7 +212,7 @@ RimeEngineComponent::~RimeEngineComponent() {
 
 void RimeEngineComponent::GetInfo(ipc::proto::ComponentInfo* info) {
   info->set_string_id(kRimeEngineComponentStringId);
-  for (const char** language = kRimeImeLanguages; *language; ++language) {
+  for (const char** language = kRimeLanguages; *language; ++language) {
     info->add_language(*language);
   }
   for (int i = 0; i < arraysize(kConsumeMessages); ++i)
@@ -221,13 +222,13 @@ void RimeEngineComponent::GetInfo(ipc::proto::ComponentInfo* info) {
   GetSubComponentsInfo(info);
   std::string dir = FileUtils::GetDataPathForComponent(
       kRimeEngineComponentStringId);
-  std::string filename = dir + "/" + kRimeImeOverIcon;
+  std::string filename = dir + "/" + kRimeOverIcon;
   ipc::proto::IconGroup icon;
   if (!FileUtils::ReadFileContent(filename,
                                   icon.mutable_over()->mutable_data())) {
     icon.clear_over();
   }
-  filename = dir + "/" + kRimeImeIcon;
+  filename = dir + "/" + kRimeIcon;
   if (FileUtils::ReadFileContent(filename,
                                  icon.mutable_normal()->mutable_data())) {
     info->mutable_icon()->CopyFrom(icon);
@@ -621,4 +622,5 @@ bool RimeEngineComponent::SetCandidateList(const RimeContext& context,
   return Send(mptr.release(), NULL);
 }
 
-}  // namespace rimeime
+}  // namespace rime
+}  // namespace plugins

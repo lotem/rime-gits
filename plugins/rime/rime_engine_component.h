@@ -1,11 +1,11 @@
 // Copyleft RIME Developers.
 // Author: Chen Gong <chen.sst@gmail.com>
 
-// This file defines an ime component class which wraps
+// This file defines an IME component class which wraps
 // Rime Input Method Engine.
 
-#ifndef GOOPY_COMPONENTS_RIMEIME_RIME_ENGINE_COMPONENT_H_
-#define GOOPY_COMPONENTS_RIMEIME_RIME_ENGINE_COMPONENT_H_
+#ifndef GOOPY_PLUGINS_RIME_RIME_ENGINE_COMPONENT_H_
+#define GOOPY_PLUGINS_RIME_RIME_ENGINE_COMPONENT_H_
 
 #include "rime_api.h"
 
@@ -20,10 +20,11 @@ class Message;
 }  // namespace proto
 }  // namespace ipc
 
-namespace rimeime {
+namespace plugins {
+namespace rime {
 
 static const char kRimeEngineComponentStringId[] =
-    "com.googlecode.rimeime.rime_engine";
+    "io.github.rimeime.rime_engine";
 
 class RimeApiWrapper : public RimeApi {
  public:
@@ -74,6 +75,7 @@ class RimeEngineComponent : public ipc::ComponentBase {
   DISALLOW_COPY_AND_ASSIGN(RimeEngineComponent);
 };
 
-}  // namespace rimeime
+}  // namespace rime
+}  // namespace plugins
 
-#endif  // GOOPY_COMPONENTS_RIMEIME_RIME_ENGINE_COMPONENT_H_
+#endif  // GOOPY_PLUGINS_RIME_RIME_ENGINE_COMPONENT_H_

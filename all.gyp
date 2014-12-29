@@ -12,7 +12,7 @@
         'components/win_frontend/frontend_component.gyp:frontend_component_x64',
         'installer/installer.gyp:win32_register',
         'ipc/service/ipc_service_win.gyp:ipc_service',
-        'rimeime/rimeime.gyp:rimeime',
+        'plugins/rime/rime.gyp:rime_plugin',
       ],
     },
     {

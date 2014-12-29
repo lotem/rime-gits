@@ -1,4 +1,4 @@
-LIBRARY rimeime
+LIBRARY rime_plugin
 EXPORTS
 ListComponents
 CreateInstance

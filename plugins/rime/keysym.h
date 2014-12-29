@@ -1,7 +1,8 @@
-#ifndef RIMEIME_KEYSYM_H_
-#define RIMEIME_KEYSYM_H_
+#ifndef GOOPY_PLUGINS_RIME_KEYSYM_H_
+#define GOOPY_PLUGINS_RIME_KEYSYM_H_
 
-namespace rimeime {
+namespace plugins {
+namespace rime {
 
 // keycodes
 
@@ -207,6 +208,7 @@ enum Modifier {
   MODIFIER_MASK = 0x5f001fff
 };
 
-}  // namespace rimeime
+}  // namespace rime
+}  // namespace plugins
 
-#endif  // RIMEIME_KEYSYM_H_
+#endif  // GOOPY_PLUGINS_RIME_KEYSYM_H_

@@ -1,15 +1,16 @@
-#include "rimeime/rime_key_event.h"
+#include "plugins/rime/rime_key_event.h"
 
 #include <windows.h>
 #include "components/common/keystroke_util.h"
 #include "ipc/constants.h"
 #include "ipc/protos/ipc.pb.h"
-#include "rimeime/keysym.h"
+#include "plugins/rime/keysym.h"
 
 using ime_goopy::components::KeyStroke;
 using ime_goopy::components::KeyStrokeUtil;
 
-namespace rimeime {
+namespace plugins {
+namespace rime {
 
 static int TranslateModifiers(const KeyStroke& key) {
   int result = 0;
@@ -165,4 +166,5 @@ RimeKeyEvent::RimeKeyEvent(const ipc::proto::KeyEvent& key) {
   keycode = TranslateKeyCode(key_stroke);
 }
 
-}  // namespace rimeime
+}  // namespace rime
+}  // namespace plugins
