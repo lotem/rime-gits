@@ -1,3 +1,5 @@
+// Copyright RIME Developers
+
 #ifndef GOOPY_PLUGINS_RIME_KEYSYM_H_
 #define GOOPY_PLUGINS_RIME_KEYSYM_H_
 

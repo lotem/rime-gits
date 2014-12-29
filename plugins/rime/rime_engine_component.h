@@ -1,5 +1,4 @@
-// Copyleft RIME Developers.
-// Author: Chen Gong <chen.sst@gmail.com>
+// Copyright RIME Developers
 
 // This file defines an IME component class which wraps
 // Rime Input Method Engine.

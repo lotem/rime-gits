@@ -1,5 +1,4 @@
-// Copyleft RIME Developers.
-// Author: Chen Gong <chen.sst@gmail.com>
+// Copyright RIME Developers
 
 #include "plugins/rime/rime_engine_component.h"
 
