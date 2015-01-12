@@ -174,9 +174,9 @@ RimeApiWrapper::RimeApiWrapper() {
   traits.shared_data_dir = shared_data_dir.c_str();
   traits.user_data_dir = user_data_dir.c_str();
   traits.distribution_name = "Rime with Google Input Tools";
-  traits.distribution_code_name = "rime-input-tools";
+  traits.distribution_code_name = "rime-gits";
   traits.distribution_version = "0.9";
-  traits.app_name = "rime-input-tools";
+  traits.app_name = "gits";
   setup(&traits);
   initialize(&traits);
   start_maintenance(/*full_check = */False);
