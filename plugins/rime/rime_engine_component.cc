@@ -147,6 +147,15 @@ RimeApiWrapper::RimeApiWrapper() {
   RIME_STRUCT_INIT(RimeApi, *api);
   RIME_STRUCT_CLEAR(*api);
 
+  // Load rime.dll and dependencies from plugin path.
+  std::wstring env_path;
+  wchar_t path[MAX_PATH] = {0};
+  if (GetEnvironmentVariable(L"PATH", path, MAX_PATH)) {
+    env_path = path;
+    env_path += L";";
+  }
+  env_path += Utf8ToWide(FileUtils::GetSystemPluginPath());
+  SetEnvironmentVariable(L"PATH", env_path.c_str());
   handle_ = ::LoadLibrary(L"rime.dll");
   if (!handle_) {
     return;
