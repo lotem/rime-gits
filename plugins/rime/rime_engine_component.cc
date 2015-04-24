@@ -166,9 +166,9 @@ RimeApiWrapper::RimeApiWrapper() {
   }
   *api = *proc();
 
-  // opencc config uses relative paths "data/opencc/..."
+  // opencc config uses relative paths "Rime/opencc/..."
   SetCurrentDirectory(AppUtils::GetSystemDataFilePath(L"").c_str());
-  std::string shared_data_dir(WideToUtf8(AppUtils::GetSystemDataFilePath(L"data")));
+  std::string shared_data_dir(WideToUtf8(AppUtils::GetSystemDataFilePath(L"Rime")));
   std::string user_data_dir(WideToUtf8(AppUtils::GetUserDataFilePath(L"Rime")));
   RIME_STRUCT(RimeTraits, traits);
   traits.shared_data_dir = shared_data_dir.c_str();
