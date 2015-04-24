@@ -14,12 +14,18 @@
 
 @echo off
 setlocal
-set PROTOC=%~dp0\depends\protoc.exe
-set PROTOBUF=%~dp0\depends\protobuf-2.5.0
-set GTEST=%~dp0\depends\gtest-1.7.0
-set ZLIB=%~dp0\depends\zlib-1.2.8
-set WTL80=%~dp0\depends\wtl80\
-set GYP=%~dp0\depends\gyp
-if not defined MSVS_VERSION set MSVS_VERSION=2012
-call %gyp%\gyp.bat --depth %~dp0 -I build\common.gypi -G msvs_version=%MSVS_VERSION%
-python build_x86_x64_together.py
+
+if exist env.bat call env.bat
+
+set build_config=Debug
+
+:parse_cmdline_options
+if "%1" == "" goto end_parsing_cmdline_options
+if /I "%1" == "debug" set build_config=Debug
+if /I "%1" == "release" set build_config=Release
+shift
+goto parse_cmdline_options
+:end_parsing_cmdline_options
+
+call gyp.bat
+msbuild.exe all.sln /p:Configuration="%build_config%" /p:TargetPlatform="Mixed Platforms"
