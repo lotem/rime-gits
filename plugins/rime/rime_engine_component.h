@@ -23,7 +23,7 @@ namespace plugins {
 namespace rime {
 
 static const char kRimeEngineComponentStringId[] =
-    "io.github.rimeime.rime_engine";
+    "io.github.rime.engine";
 
 class RimeApiWrapper : public RimeApi {
  public:
