@@ -574,6 +574,14 @@ bool RimeEngineComponent::SetComposition(const RimeContext& context,
           preedit.substr(0, context.composition.cursor_pos)).length();
   selection->set_start(cursor_pos);
   selection->set_end(cursor_pos);
+  if (context.commit_text_preview) {
+    ipc::proto::Text* inline_text = ipc_composition->mutable_inline_text();
+    inline_text->set_text(context.commit_text_preview);
+    ipc::proto::Range* inline_selection =
+        ipc_composition->mutable_inline_selection();
+    inline_selection->set_start(0);
+    inline_selection->set_end(Utf8ToWide(context.commit_text_preview).length());
+  }
   return Send(mptr.release(), NULL);
 }
 
