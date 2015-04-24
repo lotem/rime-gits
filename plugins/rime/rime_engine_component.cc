@@ -67,7 +67,7 @@ static const char kRimeIcon[]  = "rime.png";
 static const char kRimeOverIcon[]  = "rime_over.png";
 static const char kResourcePackPathPattern[] = "/rime_[LANG].pak";
 
-static const int kDefaultFontSize = 12;
+static const int kDefaultFontSize = 14;
 
 static const char kTextFormat[] = "text";
 
