@@ -11,8 +11,17 @@
 :: WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 :: See the License for the specific language governing permissions and
 :: limitations under the License.
+set build_config=Debug
 
-set outdir=%~dp0\out\bin\Debug
+:parse_cmdline_options
+if "%1" == "" goto end_parsing_cmdline_options
+if /I "%1" == "debug" set build_config=Debug
+if /I "%1" == "release" set build_config=Release
+shift
+goto parse_cmdline_options
+:end_parsing_cmdline_options
+
+set outdir=%~dp0\out\bin\%build_config%
 if %PROCESSOR_ARCHITECTURE% == AMD64 (
   set pf="c:\program files (x86)"
   copy %outdir%\frontend_component_x64.dll c:\windows\system32\input.ime
