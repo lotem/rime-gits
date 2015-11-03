@@ -10,3 +10,15 @@ How to build and try Google Input Tools on Windows:
 6. Install the certificates resources\test.cer into Trusted Root Certification Authorities.
 7. Run install_windows.bat with admin rights.
 Enjoy it!
+
+Configuration Location:
+C:\Users\<username>\AppData\Roaming\Google\Google Input Tools\Rime
+
+How to re-deploy
+Create a batch file named "deployRime.bat" with the following content
+```
+net stop googleinputservice
+taskkill /f /im googleinputhandler.exe
+net start googleinputservice
+```
+and execute this file to re-deploy
